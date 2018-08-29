@@ -1,23 +1,23 @@
 # The Things Network: RAK833-based gateway
 
-Reference setup for [The Things Network](http://thethingsnetwork.org/) gateways based on the RAK833 USB concentrator with a Raspberry Pi host using the RAK833 hat available in this same repository.
+Reference setup for [The Things Network](http://thethingsnetwork.org/) gateways based on the RAK833 USB/SPI concentrator with a Raspberry Pi host using the RAK833 SPI adapter PCB.
 
 > This documentation and installation procedure is based largely on [gonzalocasas](https://github.com/gonzalocasas) and [ttn-zh](https://github.com/ttn-zh) installation procedure for the [IMST iC880a](https://github.com/ttn-zh/ic880a-gateway) with minor changes to make it compatible with the RAK833-hat for the RAK833 module by RAK Wireless.
 
 
-## Setup based on Raspbian image
+## Setup based on standard MyPi Integrator Board Raspbian image
 
-- Plug the RAK833-Hat with the RAK833 module connected
+- Plug in the RAK833 Adapter PCB with the RAK833 module connected
 - Start your RPi connected to Ethernet
-- From a computer in the same LAN, `ssh` into the RPi using the default hostname:
+- From a computer in the same LAN, `ssh` into the RPi using default `pi` user (for IP address see HMDI output)
 
-        local $ ssh pi@raspberrypi.local
+        local $ ssh pi@192.168.1.135
 
-- Default password of a plain-vanilla RASPBIAN install for user `pi` is `raspberry`
-- Use `raspi-config` utility to configure locale options and enable SPI interfaces:
+- Default password  for user `pi` is `raspberry`
+- Edit /boot/config.txt and add the line below to the bottom to enable the SPI interface (or alternately use `raspi-config`) 
 
-        $ sudo raspi-config
-
+        dtparam=spi=on
+        
 - Reboot
 - Make sure you have an updated installation and install `git`:
 
@@ -43,15 +43,16 @@ Reference setup for [The Things Network](http://thethingsnetwork.org/) gateways 
             psk="Your_wifi_password"
         }
 
-- Clone [the installer] and start the installation
+- Clone the installer and start the installation
 
-        $ git clone https://github.com/mypiandrew/rak833-spi.git
-        $ cd ~/rak833-hat/install
+        $ git clone git clone https://github.com/mypiandrew/rak833-spi.git
+        $ cd ~/rak833-spi/install
+        $ sudo chmod +x *.sh
         $ sudo ./install.sh
 
 - If you want to use the remote configuration option, please make sure you have created a JSON file named as your gateway EUI (e.g. `B827EBFFFE7B80CD.json`) in the [Gateway Remote Config repository](https://github.com/ttn-zh/gateway-remote-config).
 
-- **Big Success!** You should now have a running gateway in front of you!
+
 
 # Credits
 
