@@ -45,7 +45,7 @@ Reference setup for [The Things Network](http://thethingsnetwork.org/) gateways 
 
 - Clone the installer and start the installation
 
-        $ git clone git clone https://github.com/mypiandrew/rak833-spi.git
+        $ git clone https://github.com/mypiandrew/rak833-spi.git
         $ cd ~/rak833-spi/install
         $ sudo chmod +x *.sh
         $ sudo ./install.sh
