@@ -2,6 +2,8 @@
 
 Reference setup for [The Things Network](http://thethingsnetwork.org/) gateways based on the RAK833 USB/SPI concentrator with a Raspberry Pi host using the RAK833 SPI adapter PCB.
 
+Note that on our PCB the RAK833 module's reset pin has been attached to GPIO25 to allow you to reset the module.
+
 ## Setup based on standard MyPi Integrator Board Raspbian image
 
 - Plug in the RAK833 Adapter PCB with the RAK833 module connected
